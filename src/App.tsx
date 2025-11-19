@@ -49,61 +49,39 @@ export const App: React.FC = () => {
 	}, []);
 
 	return (
-		<main className="h-dvh w-screen bg-black flex flex-col relative overflow-x-hidden">
-			<img
-				src="/glow-bar.svg"
-				className="fixed bottom-0 left-0"
-				id="glow-bar"
-				alt=""
-			/>
-			<img
-				src="/earth.png"
-				className="fixed bottom-0 right-0 size-200"
-				id="earth"
-				alt=""
-			/>
-			<div className="flex-1 relative flex flex-col max-md:px-4 px-20 pt-8.5 pb-22.5 lg:justify-between items-stretch">
-				<nav className="flex items-center gap-10 justify-between max-w-360 self-center w-full">
-					<img
-						src="/logo.svg"
-						alt=""
-					/>
-					<ul className="flex items-center gap-5 max-lg:hidden text-white/70">
-						{navlinks.map((link) => (
-							<li
-								key={link}
-								className="hover:text-white transition-colors cursor-pointer"
-							>
-								{link}
-							</li>
-						))}
-					</ul>
-					<button
-						className="relative w-50 py-2.5 rounded-[0.625rem] text-black bg-white flex items-center gap-1 justify-center"
-						type="button"
-					>
-						<p>Get Early Access </p>
+		<main className="h-dvh w-screen bg-black flex flex-col relative items-center overflow-x-hidden">
+			<div className="flex flex-col flex-1 w-full max-w-500 relative sm:max-h-306">
+				<img
+					src="/glow-bar.svg"
+					className="fixed bottom-0 left-0"
+					id="glow-bar"
+					alt=""
+				/>
+				<img
+					src="/earth.png"
+					className="fixed bottom-0 right-0 w-screen sm:size-200"
+					id="earth"
+					alt=""
+				/>
+				<div className="flex-1 relative flex flex-col max-md:px-4 px-20 pt-8.5 pb-12 sm:pb-22.5 lg:justify-between items-stretch self-center w-full">
+					<nav className="flex items-center gap-10 justify-between w-full">
 						<img
-							src="/arrow-right.svg"
-							className="size-6 arrow-right"
+							src="/nav-logo.svg"
+							className="max-sm:w-30"
 							alt=""
 						/>
-					</button>
-				</nav>
-				<div className="flex-1 flex flex-col items-start pt-24.5 gap-17">
-					<div className="flex-1 flex flex-col gap-17">
-						<div className="flex flex-col">
-							<h1 className="text-white drop-shadow-md font-bold text-7xl mb-6 font-inter">
-								What If Your Storage <br /> Could Think Ahead?
-							</h1>
-							<p className="text-white/70 p-2.5 text-lg">
-								DeepKeep AI gives you encrypted, long-term storage that
-								doesn&apos;t <br /> forget, organizing your files with
-								context-aware intelligence
-							</p>
-						</div>
+						<ul className="flex items-center gap-5 max-lg:hidden text-white/70">
+							{navlinks.map((link) => (
+								<li
+									key={link}
+									className="hover:text-white transition-colors cursor-pointer"
+								>
+									{link}
+								</li>
+							))}
+						</ul>
 						<button
-							className="relative w-50 py-2.5 rounded-[0.625rem] text-black bg-white flex items-center gap-1 justify-center ml-2.5"
+							className="relative w-48 sm:w-50 py-2.5 rounded-[0.625rem] text-black bg-white flex items-center gap-1 justify-center"
 							type="button"
 						>
 							<p>Get Early Access </p>
@@ -113,27 +91,52 @@ export const App: React.FC = () => {
 								alt=""
 							/>
 						</button>
+					</nav>
+					<div className="flex-1 flex flex-col items-start pt-24.5 gap-17">
+						<div className="flex-1 flex flex-col gap-17">
+							<div className="flex flex-col">
+								<h1 className="text-white drop-shadow-md font-bold text-5xl sm:text-7xl mb-6 font-inter">
+									What If Your Storage <br /> Could Think Ahead?
+								</h1>
+								<p className="text-white/70 p-2.5 sm:text-lg">
+									DeepKeep AI gives you encrypted, long-term storage that
+									doesn&apos;t <br /> forget, organizing your files with
+									context-aware intelligence
+								</p>
+							</div>
+							<button
+								className="relative w-48 sm:w-50 py-2.5 rounded-[0.625rem] text-black bg-white flex items-center gap-1 justify-center ml-2.5"
+								type="button"
+							>
+								<p>Get Early Access </p>
+								<img
+									src="/arrow-right.svg"
+									className="size-6 arrow-right"
+									alt=""
+								/>
+							</button>
+						</div>
+						<Partners />
 					</div>
-					<Partners />
 				</div>
+				<p className="fixed bottom-4 text-white text-xs left-1/2 -translate-x-1/2 text-center">
+					Code:{" "}
+					<a
+						className="underline"
+						href="https://x.com/itzadetunji1"
+					>
+						Adetunji Adeyinka
+					</a>{" "}
+					<br />
+					Design:{" "}
+					<a
+						className="underline"
+						href="https://x.com/nerooeth"
+					>
+						Nero
+					</a>
+				</p>
 			</div>
-			<p className="fixed bottom-4 text-white text-xs left-1/2 -translate-x-1/2 text-center">
-				Code:{" "}
-				<a
-					className="underline"
-					href="https://x.com/itzadetunji1"
-				>
-					Adetunji Adeyinka
-				</a>{" "}
-				<br />
-				Design:{" "}
-				<a
-					className="underline"
-					href="https://x.com/nerooeth"
-				>
-					Nero
-				</a>
-			</p>
 		</main>
 	);
 };
@@ -183,7 +186,7 @@ const Partners = () => {
 	}, []);
 
 	return (
-		<div className="overflow-hidden max-w-md self-start py-8">
+		<div className="overflow-hidden md:max-w-md self-start py-8">
 			<ul
 				ref={containerRef}
 				className="flex gap-12 items-center"
