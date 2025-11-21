@@ -1,6 +1,10 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import React, { useRef } from "react";
+import type React from "react";
+import { useCallback, useRef } from "react";
+import Particles from "react-particles";
+import { loadFull } from "tsparticles";
+import type { Engine } from "tsparticles-engine";
 
 export const App: React.FC = () => {
 	useGSAP(() => {
@@ -48,9 +52,46 @@ export const App: React.FC = () => {
 		);
 	}, []);
 
+	const options = {
+		particles: {
+			number: {
+				value: 5,
+				density: {
+					enable: true,
+					area: 800,
+				},
+			},
+			color: {
+				value: ["#ffffff"],
+			},
+			shape: {
+				type: "star",
+			},
+			opacity: {
+				value: 1,
+			},
+			size: {
+				value: 1.4,
+			},
+			links: false,
+			move: {
+				enable: true,
+				speed: 0.5,
+				direction: "none",
+				random: false,
+				straight: false,
+				outModes: "out",
+			},
+		},
+	};
+
+	const particlesInit = useCallback(async (engine: Engine) => {
+		await loadFull(engine);
+	}, []);
+
 	return (
 		<main className="h-dvh w-screen bg-black flex flex-col relative items-center overflow-x-hidden">
-			<div className="flex flex-col flex-1 w-full max-w-500 relative sm:max-h-306">
+			<div className="flex flex-col flex-1 w-full max-w-500 relative sm:max-h-306 z-10">
 				<img
 					src="/glow-bar.svg"
 					className="fixed bottom-0 left-0"
@@ -59,7 +100,7 @@ export const App: React.FC = () => {
 				/>
 				<img
 					src="/earth.png"
-					className="fixed bottom-0 right-0 w-screen sm:size-200"
+					className="fixed bottom-0 right-0 w-screen sm:size-200 opacity-100"
 					id="earth"
 					alt=""
 				/>
@@ -137,6 +178,12 @@ export const App: React.FC = () => {
 					</a>
 				</p>
 			</div>
+			<Particles
+				// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
+				options={options as any}
+				init={particlesInit}
+			/>
 		</main>
 	);
 };
